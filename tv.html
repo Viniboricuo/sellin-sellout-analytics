@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR" class="tv-html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modo TV · Sellin e Sellout · Demo Retail Co.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312304a'/%3E%3Cpath d='M8 22l5-6 4 3 7-9' fill='none' stroke='%2374b9ec' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/tv.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body class="tv">
+<div class="tv-glow" aria-hidden="true"></div>
+
+<header class="tv-head">
+  <span class="tv-badge" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+  <div class="tv-head-txt">
+    <p class="tv-kicker"><span class="hl">Sell-out</span> · <i class="live" aria-hidden="true"></i><em id="tv-dados">carregando</em></p>
+    <p class="tv-title" id="tv-titulo">Sellin e Sellout</p>
+  </div>
+  <nav class="tv-dots" id="tv-dots" aria-label="Painéis"></nav>
+  <div class="tv-actions">
+    <button class="tv-btn" id="tv-pausa" type="button" title="Pausar / continuar (espaço)" aria-label="Pausar">
+      <svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></button>
+    <a class="tv-btn" id="tv-site" href="index.html" target="_blank" rel="noopener" title="Abrir o site" aria-label="Abrir o site">
+      <svg viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+    <button class="tv-btn" id="tv-cheia" type="button" title="Tela cheia" aria-label="Tela cheia">
+      <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+    <span class="tv-clock" id="tv-relogio">--:--</span>
+  </div>
+  <div class="tv-progress" aria-hidden="true"><i id="tv-barra"></i></div>
+</header>
+
+<main class="tv-stage" id="tv-palco"></main>
+
+<footer class="tv-ticker tv-box" aria-label="Fita com o sell-through">
+  <div class="tv-ticker-label"><i></i><span>Sell-through 4S</span></div>
+  <div class="tv-ticker-track"><div class="tv-ticker-run" id="tv-fita"></div></div>
+</footer>
+
+<p class="tv-note">Projeto de portfólio · dados sintéticos · Demo Retail Co.</p>
+
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/tv.js"></script>
+</body>
+</html>

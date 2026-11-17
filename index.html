@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sellin e Sellout · Demo Retail Co.</title>
+  <meta name="description" content="Painel de demonstração de sell-in x sell-out por canal, com dados sintéticos.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312304a'/%3E%3Cpath d='M8 22l5-6 4 3 7-9' fill='none' stroke='%2374b9ec' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <script>
+    // aplica o tema salvo antes de pintar (evita piscar)
+    try { const t = localStorage.getItem("ss-tema"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="shell" id="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="monogram" aria-hidden="true">DR</div>
+      <div class="brand-text">
+        <strong>Sellin e Sellout</strong>
+        <span>Demo Retail Co. · Analytics</span>
+      </div>
+      <button class="collapse-btn" id="btn-mini" type="button" aria-label="Recolher menu" aria-expanded="true" title="Recolher menu">
+        <svg class="icn" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg>
+      </button>
+    </div>
+
+    <nav class="nav" aria-label="Páginas">
+      <div class="module">
+        <div class="module-head"><i class="dot" aria-hidden="true"></i><span>Sell-out</span></div>
+        <a href="#geral" data-page="geral" title="Visão geral">
+          <svg class="icn" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="8" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="15" width="7" height="6" rx="1.5"/></svg>
+          <span>Visão geral</span></a>
+        <a href="#lancamentos" data-page="lancamentos" title="Lançamentos e SKUs">
+          <svg class="icn" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>
+          <span>Lançamentos</span></a>
+        <a href="#lojas" data-page="lojas" title="Sell-out por loja">
+          <svg class="icn" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M10 20v-5h4v5"/></svg>
+          <span>Por loja</span></a>
+        <a href="#franqueados" data-page="franqueados" title="Sell-out por franqueado">
+          <svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/></svg>
+          <span>Por franqueado</span></a>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <p class="data-info" id="data-info"><b><i aria-hidden="true"></i>Dados sintéticos</b></p>
+      <div class="foot-btns">
+        <button class="btn ghost" id="btn-semente" type="button" title="Gera outro conjunto de dados fictícios (outra semente)">
+          <svg class="icn" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+          <span>Nova semente</span></button>
+        <a class="btn ghost icon" id="btn-tv" href="tv.html" target="_blank" rel="noopener" title="Modo TV (abre em outra aba)" aria-label="Modo TV">
+          <svg class="icn" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>
+        <button class="btn ghost icon" id="btn-tema" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
+          <svg class="icn" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="chips" id="chips" role="group" aria-label="Canal e categoria"></div>
+      <button class="btn-filters" id="btn-filtros" type="button" aria-controls="painel" aria-expanded="false">
+        <svg class="icn" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>
+        <span>Filtros</span><span class="badge" id="contador" hidden>0</span></button>
+      <section class="filter-panel" id="painel" aria-label="Filtros" hidden></section>
+    </header>
+
+    <header class="page-head">
+      <div>
+        <p class="eyebrow"><i class="dot" aria-hidden="true"></i><span>Sellin e Sellout</span></p>
+        <h1 id="titulo">Visão geral</h1>
+        <p class="subtitle" id="subtitulo"></p>
+      </div>
+      <div class="period" id="periodo" role="group" aria-label="Período do lançamento"></div>
+    </header>
+
+    <main class="content" id="conteudo"></main>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
