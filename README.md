@@ -1,5 +1,11 @@
 # Sellin e Sellout · Demo Retail Co.
 
+**▶ [Demo ao vivo](https://viniboricuo.github.io/sellin-sellout-analytics/)** · [Modo TV](https://viniboricuo.github.io/sellin-sellout-analytics/tv.html) · sell-in × sell-out · sell-through 4S · filtros em cascata · exportação para Excel
+
+![Visão geral do painel](docs/screenshot.jpg)
+
+**Em números:** 4 canais (lojas próprias, franquias, e-commerce e multimarcas) · 4 páginas + modo TV com 4 painéis · régua de sell-through 4S por categoria · ~10 mil registros SKU × loja por semente
+
 > **Disclaimer:** Projeto de portfólio. Marca, dados e código fictícios, gerados sinteticamente; não contém código, dados, fotos ou logos de nenhuma empresa.
 
 ## English
